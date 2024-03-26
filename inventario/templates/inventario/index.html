@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Hola {{nombre}}
+    <br>
+    <table>
+        <tr>
+            <th>Marca</th>
+            <th>Pais</th>
+            <th>Cantidad</th>
+        </tr>
+        {% for item in data %}
+            <tr>
+                <th>{{item.marca}}</th>
+                <th>{{item.pais}}</th>
+                <th>{{item.cantidad}}</th>
+            </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <div>
+        Grafica
+        {{ mihtml|safe }}
+    </div>
+</body>
+</html>
