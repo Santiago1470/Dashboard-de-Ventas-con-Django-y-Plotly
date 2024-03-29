@@ -3,6 +3,12 @@ from inventario.models import Carro
 import pandas as pd
 import plotly.express as px
 
+def inicio(request):
+    return render(request, "inventario/inicio.html")
+
+#def mostrarVentas(request):
+
+
 def saludo(request):
 
     data = Carro.objects.all()
@@ -11,7 +17,7 @@ def saludo(request):
         "cantidad": [20, 10, 3],
         "pais": ['Colombia', 'Mexico', 'Venezuela']
     })
-    fig = px.bar(df, x='marca', y='cantidad', color='pais')
+    fig = px.bar_polar(df, x='marca', y='cantidad', color='pais')
     mihtml = fig.to_html(full_html = False)
     print(mihtml)
     context = {
@@ -20,3 +26,6 @@ def saludo(request):
         "mihtml": mihtml
     }
     return render(request, "inventario/index.html", context)
+
+
+    

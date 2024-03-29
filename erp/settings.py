@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+STATICFILES_DIRS=['inventario/templates/inventario/static']
 
 # Application definition
 
@@ -55,7 +56,7 @@ ROOT_URLCONF = 'erp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['inventario/templates/inventario/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

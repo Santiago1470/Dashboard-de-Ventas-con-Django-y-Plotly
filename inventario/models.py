@@ -8,3 +8,10 @@ class Carro(models.Model):
 
     def __str__(self):
         return self.marca
+
+    #barrio = marca = models.CharField(max_length=120)
+    #vestasPorMes = models.CharField(max_length=120)
+    #def __str__(self):
+    #return self.barrio
+    
+    
