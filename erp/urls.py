@@ -1,11 +1,11 @@
 
 from django.contrib import admin
 from django.urls import path
-from inventario.views import saludo
-from inventario.views import inicio
+from ventas import views
+
 
 urlpatterns = [
-    path('', inicio),
+    path('', views.inicio),
     path('admin/', admin.site.urls),
-    path('saludo/', saludo),
+    path('visualizacion/', views.mostrarVentas),
 ]

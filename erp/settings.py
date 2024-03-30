@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-STATICFILES_DIRS=['inventario/templates/inventario/static']
+STATICFILES_DIRS=['ventas/templates/ventas/static']
 
 # Application definition
 
@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'inventario'
+    'ventas'
 ]
 
 MIDDLEWARE = [
@@ -56,7 +56,7 @@ ROOT_URLCONF = 'erp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['inventario/templates/inventario/'],
+        'DIRS': ['ventas/templates/ventas/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

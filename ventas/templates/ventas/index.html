@@ -30,17 +30,17 @@
                 <table class="table table-bordered table-striped">
                     <thead class="bg-dark text-white">
                         <tr>
-                            <th>Marca</th>
-                            <th>Pais</th>
+                            <th>ID</th>
                             <th>Cantidad</th>
+                            <th>Barrio</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for item in data %}
                         <tr>
-                            <td>{{ item.marca }}</td>
-                            <td>{{ item.pais }}</td>
+                            <td>{{ item.id }}</td>
                             <td>{{ item.cantidad }}</td>
+                            <td>{{ item.barrio }}</td>
                         </tr>
                         {% endfor %}
                     </tbody>
