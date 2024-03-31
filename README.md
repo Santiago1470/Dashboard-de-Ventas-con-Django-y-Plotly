@@ -20,4 +20,4 @@ En el caso de que no se hayan ingresado datos, la tabla aparece en blanco y la g
 
 ## Autores
 Andrés Felipe Patarroyo Muñoz  
-Santiago Jair Torres Rivera# Dashboard-de-Ventas-con-Django-y-Plotly
+Santiago Jair Torres Rivera
