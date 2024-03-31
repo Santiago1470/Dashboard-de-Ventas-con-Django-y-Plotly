@@ -1,0 +1,29 @@
+body{
+background-image: url(bg-masthead.jpg);
+}
+
+.center-screen {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#welcome{
+    color: white;
+    text-shadow: 2px 2px 2px black;
+
+}
+
+#login{
+    background-color: slategrey;
+    border-radius: 5%;
+    border-color: slategrey;
+    box-shadow: 0 0 0 .2rem slategrey;
+}
+
+#login:hover{
+    background-color: slategrey;
+    border-radius: 5%;
+    border-color: slategrey;
+}
