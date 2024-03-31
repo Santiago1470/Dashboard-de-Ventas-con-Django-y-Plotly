@@ -8,31 +8,59 @@ def inicio(request):
     return render(request, "ventas/inicio.html")
 
 def mostrarVentas(request):
+    mes_selec = ""
+    barrio_selec = ""
+    
+    barrios = models.Barrio.objects.all()
+    
     if request.method == 'POST':
         mes_selec = request.POST.get('mes')
-        if mes_selec == "all":
+        barrio_selec = request.POST.get('barrio')
+        
+        if mes_selec == "all" and barrio_selec == "all":
             data = models.Venta.objects.all()
-        else:
+        elif mes_selec == "all":
+            data = models.Venta.objects.filter(barrio=barrio_selec)
+        elif barrio_selec == "all":
             data = models.Venta.objects.filter(mes=mes_selec)
+        else:
+            data = models.Venta.objects.filter(mes=mes_selec, barrio=barrio_selec)
     else:
         data = models.Venta.objects.all()
         
     figura = None
-    if data:
-        df = {
+    if mes_selec == "all" and barrio_selec != "all" and data:
+        df_all_months = {
             'ID': [venta.id for venta in data],
             'Cantidad': [venta.cantidad for venta in data],
             'Barrio': [venta.barrio.nombre for venta in data],
             'Mes': [venta.mes for venta in data]
+            # 'Mes': ["Todos los meses" for _ in range(len(data))]
         }
-        figura = px.bar(df, x='Barrio', y='Cantidad', color='Mes')
-
+        figura = px.bar(df_all_months, x='Mes', y='Cantidad', color='Barrio')
+    else :
+        if data:
+            df = {
+                'ID': [venta.id for venta in data],
+                'Cantidad': [venta.cantidad for venta in data],
+                'Barrio': [venta.barrio.nombre for venta in data],
+                'Mes': [venta.mes for venta in data]
+            }
+            figura = px.bar(df, x='Barrio', y='Cantidad', color='Mes')
+        
+        # figura = figura_all_months if figura is None else figura.add_traces(figura_all_months.data)
+    barrio_selec = int(barrio_selec) if barrio_selec != "" and barrio_selec != "all" else 0
     context = {
         "nombre": "Usuario",
         "data": data,
-        "mihtml": figura.to_html(full_html=False) if figura else None
+        "mihtml": figura.to_html(full_html=False) if figura else None,
+        "mes_selec": mes_selec,
+        "barrio_selec": barrio_selec,
+        "barrios": barrios
     }
     return render(request, "ventas/index.html", context)
+
+
 
 
 # def saludo(request):

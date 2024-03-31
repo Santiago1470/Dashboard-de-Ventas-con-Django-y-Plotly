@@ -26,23 +26,37 @@
             <form method="POST" id="formulario">
                 {% csrf_token %}
                 <select select class="form-select" aria-label="Selecciona el mes para filtrar" id="mesSelect" name="mes">
-                    <option value="ENERO">Enero</option>
-                    <option value="FEBRERO">Febrero</option>
-                    <option value="MARZO">Marzo</option>
-                    <option value="ABRIL">Abril</option>
-                    <option value="MAYO">Mayo</option>
-                    <option value="JUNIO">Junio</option>
-                    <option value="JULIO">Julio</option>
-                    <option value="AGOSTO">Agosto</option>
-                    <option value="SEPTIEMBRE">Septiembre</option>
-                    <option value="OCTUBRE">Octubre</option>
-                    <option value="NOVIEMBRE">Noviembre</option>
-                    <option value="DICIEMBRE">Diciembre</option>
-                    <option value="all">Todos</option>
+                    <option value="all" {% if mes_selec == "all" %}selected{% endif %}>Todos</option>
+                    <option value="ENERO" {% if mes_selec == "ENERO" %}selected{% endif %}>Enero</option>
+                    <option value="FEBRERO" {% if mes_selec == "FEBRERO" %}selected{% endif %}>Febrero</option>
+                    <option value="MARZO" {% if mes_selec == "MARZO" %}selected{% endif %}>Marzo</option>
+                    <option value="ABRIL" {% if mes_selec == "ABRIL" %}selected{% endif %}>Abril</option>
+                    <option value="MAYO" {% if mes_selec == "MAYO" %}selected{% endif %}>Mayo</option>
+                    <option value="JUNIO" {% if mes_selec == "JUNIO" %}selected{% endif %}>Junio</option>
+                    <option value="JULIO" {% if mes_selec == "JULIO" %}selected{% endif %}>Julio</option>
+                    <option value="AGOSTO" {% if mes_selec == "AGOSTO" %}selected{% endif %}>Agosto</option>
+                    <option value="SEPTIEMBRE" {% if mes_selec == "SEPTIEMBRE" %}selected{% endif %}>Septiembre</option>
+                    <option value="OCTUBRE" {% if mes_selec == "OCTUBRE" %}selected{% endif %}>Octubre</option>
+                    <option value="NOVIEMBRE" {% if mes_selec == "NOVIEMBRE" %}selected{% endif %}>Noviembre</option>
+                    <option value="DICIEMBRE" {% if mes_selec == "DICIEMBRE" %}selected{% endif %}>Diciembre</option>
+                </select>
+                <select class="form-select" aria-label="Selecciona el barrio para filtrar" id="barrioSelect" name="barrio">
+                    <option value="all">Todos los barrios</option>
+                    {% for barrio in barrios %}
+                        <option value="{{ barrio.id }}" {% if barrio.id == barrio_selec %}selected{% endif %}>{{ barrio.nombre }}</option>
+                    {% endfor %}
                 </select>
                 <button type="submit" class="btn btn-success">Filtrar</button>
             </form>
         </div>
+        <!-- <div class="row" id="form">
+            <p>Filtrar por barrio:</p>
+            <form method="POST" id="formulario">
+                {% csrf_token %}
+                
+                <button type="submit" class="btn btn-success">Filtrar</button>
+            </form>
+        </div> -->
         <div class="row">
             <div class="col-md-6">
                 {% if mihtml %}
