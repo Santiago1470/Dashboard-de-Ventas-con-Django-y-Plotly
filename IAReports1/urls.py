@@ -1,9 +1,9 @@
 from django.contrib import admin
 from django.urls import path
-
-from report import views
+from ventas import views
 
 urlpatterns = [
+    path('', views.inicio),
     path('admin/', admin.site.urls),
-    path('dash/', views.index, name="dash"),
+        path('visualizacion/', views.mostrarVentas),
 ]

@@ -6,4 +6,4 @@ class BarriosAdmin(admin.ModelAdmin):
     list_display = ["id", "nombre", "ubicacion"]
 @admin.register(models.Venta)  
 class VentasAdmin(admin.ModelAdmin):
-    list_display = ["id", "cantidad", "barrio"]
+    list_display = ["id", "cantidad", "barrio", "mes"]

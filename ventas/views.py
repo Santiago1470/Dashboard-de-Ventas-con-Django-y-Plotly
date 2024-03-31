@@ -8,19 +8,29 @@ def inicio(request):
     return render(request, "ventas/inicio.html")
 
 def mostrarVentas(request):
-    data = models.Venta.objects.all()
-    df = pd.DataFrame({
-    'ID': [venta.id for venta in data],
-    'Cantidad': [venta.cantidad for venta in data],
-    'Barrio': [venta.barrio.nombre for venta in data]  
-    })
-    figura = px.bar(df, x='Barrio', y='Cantidad', color='ID')
-    html = figura.to_html(full_html = False)
-    print(html)
+    if request.method == 'POST':
+        mes_selec = request.POST.get('mes')
+        if mes_selec == "all":
+            data = models.Venta.objects.all()
+        else:
+            data = models.Venta.objects.filter(mes=mes_selec)
+    else:
+        data = models.Venta.objects.all()
+        
+    figura = None
+    if data:
+        df = {
+            'ID': [venta.id for venta in data],
+            'Cantidad': [venta.cantidad for venta in data],
+            'Barrio': [venta.barrio.nombre for venta in data],
+            'Mes': [venta.mes for venta in data]
+        }
+        figura = px.bar(df, x='Barrio', y='Cantidad', color='Mes')
+
     context = {
         "nombre": "Usuario",
         "data": data,
-        "mihtml": html
+        "mihtml": figura.to_html(full_html=False) if figura else None
     }
     return render(request, "ventas/index.html", context)
 
