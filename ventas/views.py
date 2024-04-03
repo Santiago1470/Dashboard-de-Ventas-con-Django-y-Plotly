@@ -29,6 +29,9 @@ def mostrarVentas(request):
         data = models.Venta.objects.all()
         
     figura = None
+    figura2 = None
+    figura3 = None
+    figura4 = None
     if mes_selec == "all" and barrio_selec != "all" and data:
         df_all_months = {
             'ID': [venta.id for venta in data],
@@ -37,7 +40,10 @@ def mostrarVentas(request):
             'Mes': [venta.mes for venta in data]
             # 'Mes': ["Todos los meses" for _ in range(len(data))]
         }
-        figura = px.bar(df_all_months, x='Mes', y='Cantidad', color='Barrio')
+        figura = px.bar(df_all_months, x='Mes', y='Cantidad', color='Barrio', title='Ventas')
+        figura2 = px.scatter(df_all_months, x='Mes', y='Cantidad' , title='Ventas')
+        figura3 = px.line(df_all_months, x='Mes', y='Cantidad', color='Barrio', symbol='Barrio' , title='Ventas')
+        ##figura4 = px.pie(df, values='Cantidad', names='Barrio' , title='Ventas')
     else :
         if data:
             df = {
@@ -47,13 +53,19 @@ def mostrarVentas(request):
                 'Mes': [venta.mes for venta in data]
             }
             figura = px.bar(df, x='Barrio', y='Cantidad', color='Mes')
-        
+            figura2 = px.scatter(df, x='Barrio', y='Cantidad')
+            figura3 = px.line(df, x='Barrio', y='Cantidad', color='Barrio', symbol='Barrio')
+            ##figura4 = px.pie(df, values='Cantidad',names='Mes' , title='Ventas')
+            
         # figura = figura_all_months if figura is None else figura.add_traces(figura_all_months.data)
     barrio_selec = int(barrio_selec) if barrio_selec != "" and barrio_selec != "all" else 0
     context = {
         "nombre": "Usuario",
         "data": data,
         "mihtml": figura.to_html(full_html=False) if figura else None,
+        "mihtml2":figura2.to_html(full_html=False) if figura2 else None,
+        "mihtml3":figura3.to_html(full_html=False) if figura3 else None,
+        "mihtml4":figura4.to_html(full_html=False) if figura4 else None,
         "mes_selec": mes_selec,
         "barrio_selec": barrio_selec,
         "barrios": barrios

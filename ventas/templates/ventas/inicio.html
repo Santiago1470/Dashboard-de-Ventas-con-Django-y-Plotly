@@ -1,45 +1,65 @@
 <!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenido</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'index.css' %}">
-</head>
-
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="">Dashboard</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Sobre nosotros</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/admin/login/?next=/admin/">Login</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <div class="container-fluid center-screen">
-        <div class="row justify-content-center">
-            <div class="col-md-6 text-center">
-                <h1 class="mb-4" id="welcome">¡Bienvenido al Dashboard de Ventas!</h1>
-                <a href="/visualizacion" class="btn btn-success" id="login">Visualizar</a>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Bienvenido</title>
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    </head>
+    <body id="page-top">
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="#page-top">Dashboard</a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="#about">Sobre nosotros</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/admin/login/?next=/admin/">Login</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-
+        </nav>
+        <header class="masthead">
+            <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
+                <div class="d-flex justify-content-center">
+                    <div class="text-center">
+                        <h1 class="mx-auto my-0 text-uppercase">¡Bienvenido al Dashboard!</h1>
+                        <h2 class="text-white-50 mx-auto mt-2 mb-5">Puedes vizualizar las ventas de diferentes formas graficas</h2>
+                        <a class="btn btn-primary" href="/visualizacion">vizualizar</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <section class="about-section text-center" id="about">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-lg-8">
+                        <h2 class="text-white mb-4">Software con Python y Django</h2>
+                        <p class="text-white-50">
+                            Somos dos estudiantes realizando un prototipo de software usando Django, Plotly y Pandas para vizualizar datos, como puede ser
+                            <a href="/visualizacion">aqui.</a>
+                            Puedes ver el codigo en <a href="https://github.com/Santiago1470/Dashboard-de-Ventas-con-Django-y-Plotly">Github</a>
+                        </p>
+                    </div>
+                </div>
+                {% load static %}
+                <img class="img-fluid" src="{% static 'ipad.png'%}" alt="..." />
+            </div>
+        </section>
+        <footer class="footer bg-black small text-center text-white-50"><div class="container px-4 px-lg-5">Python &copy; Django</div></footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        {% load static %}
+        <script src="{% static 'scripts.js'%}"></script>
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </body>
 </html>
-
