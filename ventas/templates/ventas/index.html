@@ -18,11 +18,11 @@
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <a class="navbar-brand ps-3" href="/">Dashboard</a>
     </nav>
-    <div id="layoutSidenav">
+    
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <div class="row">
+                    <div class="row" id="rowcolumn">
                         <form method="POST" id="formulario">
                             {% csrf_token %}
                             <div class="row">
@@ -70,7 +70,10 @@
                                     {% if mihtml %}
                                     {{ mihtml|safe }}
                                     <div id="plotly-graph"></div>
-                                    {% endif %}
+                                {% else %}
+                                {% load static%}
+                                    <img src="{% static 'nofound.png' %}" alt="No Data Found" width="900px" height="475px">
+                                {% endif %}
                                 </div>
                             </div>
                         </div>
@@ -84,7 +87,10 @@
                                     {% if mihtml2 %}
                                     {{ mihtml2|safe }}
                                     <div id="plotly-graph"></div>
-                                    {% endif %}
+                                {% else %}
+                                {% load static%}
+                                    <img src="{% static 'nofound.png' %}" alt="No Data Found" width="900px" height="475px">
+                                {% endif %}
                                 </div>
                             </div>
                         </div>
@@ -100,7 +106,10 @@
                                     {% if mihtml3 %}
                                     {{ mihtml3|safe }}
                                     <div id="plotly-graph"></div>
-                                    {% endif %}
+                                {% else %}
+                                {% load static%}
+                                    <img src="{% static 'nofound.png' %}" alt="No Data Found" width="900px" height="475px">
+                                {% endif %}
                                 </div>
                             </div>
                         </div>
@@ -114,7 +123,10 @@
                                     {% if mihtml4 %}
                                     {{ mihtml4|safe }}
                                     <div id="plotly-graph"></div>
-                                    {% endif %}
+                                {% else %}
+                                {% load static%}
+                                    <img src="{% static 'nofound.png' %}" alt="No Data Found" width="900px" height="475px">
+                                {% endif %}
                                 </div>
                             </div>
                         </div>
@@ -157,7 +169,6 @@
                 </div>
             </footer>
         </div>
-    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>

@@ -43,7 +43,7 @@ def mostrarVentas(request):
         figura = px.bar(df_all_months, x='Mes', y='Cantidad', color='Barrio', title='Ventas')
         figura2 = px.scatter(df_all_months, x='Mes', y='Cantidad' , title='Ventas')
         figura3 = px.line(df_all_months, x='Mes', y='Cantidad', color='Barrio', symbol='Barrio' , title='Ventas')
-        ##figura4 = px.pie(df, values='Cantidad', names='Barrio' , title='Ventas')
+        figura4 = px.funnel(df_all_months, x='Cantidad', y='Barrio', color='Mes', title='Ventas')
     else :
         if data:
             df = {
@@ -54,8 +54,8 @@ def mostrarVentas(request):
             }
             figura = px.bar(df, x='Barrio', y='Cantidad', color='Mes')
             figura2 = px.scatter(df, x='Barrio', y='Cantidad')
-            figura3 = px.line(df, x='Barrio', y='Cantidad', color='Barrio', symbol='Barrio')
-            ##figura4 = px.pie(df, values='Cantidad',names='Mes' , title='Ventas')
+            figura3 = px.line(df, x='Mes', y='Cantidad', color='Barrio', symbol='Barrio')
+            figura4 = px.funnel(df, x='Cantidad',y='Barrio', color='Mes' , title='Ventas')
             
         # figura = figura_all_months if figura is None else figura.add_traces(figura_all_months.data)
     barrio_selec = int(barrio_selec) if barrio_selec != "" and barrio_selec != "all" else 0
