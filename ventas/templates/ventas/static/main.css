@@ -11244,3 +11244,7 @@ body {
 #rowcolumn {
   padding-top: 4.2rem; 
 }
+#image{
+  width: 100%;
+  height: 100%;
+}
